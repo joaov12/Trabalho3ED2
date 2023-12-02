@@ -1,4 +1,4 @@
-package Teste;
+package guiInterface;
 
 import javax.swing.*;
 
@@ -438,7 +438,7 @@ public class GUI extends JFrame {
         ms_pr.setPeso(573);
         ms_sp.setPeso(893);
         rj_sp.setPeso(360);
-        mg_sp.setPeso(491);
+        mg_sp.setPeso(491);  
         mt_ms.setPeso(492);
         mg_ms.setPeso(391);
         go_ms.setPeso(432);
