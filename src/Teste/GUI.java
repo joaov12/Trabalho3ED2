@@ -37,6 +37,7 @@ public class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Menor Caminho"));
         panel.setBackground(new Color(240, 240, 240));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 10, 5, 10);
@@ -126,15 +127,40 @@ public class GUI extends JFrame {
 
     private void exibirResultado(List<Vertice> menorCaminho) {
         StringBuilder resultado = new StringBuilder("Menor Caminho: ");
+        double custoDoCaminho = 0.0;
+
         for (int i = 0; i < menorCaminho.size(); i++) {
             resultado.append(menorCaminho.get(i).getNomeCidade());
+
             if (i < menorCaminho.size() - 1) {
+                Vertice origem = menorCaminho.get(i);
+                Vertice destino = menorCaminho.get(i + 1);
+                Aresta aresta = encontrarArestaEntreVertices(origem, destino);
+
                 resultado.append(" -> ");
+                //resultado.append(aresta.getPeso());
+
+                // Calcula o custo adicionando o peso da aresta ao custo do caminho
+                custoDoCaminho += aresta.getPeso();
             }
         }
+
+        resultado.append("\nCusto do Caminho: ").append(custoDoCaminho).append(" Quilômentros");
+
         resultadoArea.setText(resultado.toString());
     }
 
+
+    private Aresta encontrarArestaEntreVertices(Vertice origem, Vertice destino) {
+        for (Aresta aresta : origem.getArestas()) {
+            if (aresta.getOrigem().equals(origem) && aresta.getDestino().equals(destino)) {
+                return aresta;
+            }
+        }
+        return null;  // Retorna null se a aresta não for encontrada
+    }
+
+    
     private void customizeFonts() {
         Font font = new Font("Arial", Font.PLAIN, 14);
         origemField.setFont(font);
@@ -153,22 +179,7 @@ public class GUI extends JFrame {
         });
     }
 
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //
-    
+     
     private static Grafo construirGrafo() {
     	Vertice ac = new Vertice();
     	ac.setNomeCidade("Acre");
@@ -372,99 +383,97 @@ public class GUI extends JFrame {
         
         
         
-        rs_sc.setPeso(1);
-        sc_pr.setPeso(1);
-        pr_sp.setPeso(1);
-        pr_ms.setPeso(1);
-        sp_ms.setPeso(1);
-        sp_rj.setPeso(1);
-        sp_mg.setPeso(1);
-        ms_mt.setPeso(1);
-        ms_mg.setPeso(1);
-        ms_go.setPeso(1);
-        rj_mg.setPeso(1);
-        rj_es.setPeso(1);
-        mg_go.setPeso(1);
-        mg_es.setPeso(1);
-        mg_ba.setPeso(1);
-        es_ba.setPeso(1);
-        go_ba.setPeso(1);
-        go_to.setPeso(1);
-        go_mt.setPeso(1);
-        mt_to.setPeso(1);
-        mt_pa.setPeso(1);
-        mt_ro.setPeso(1);
-        mt_am.setPeso(1);
-        ro_ac.setPeso(1);
-        ro_am.setPeso(1);
-        ac_am.setPeso(1);
-        am_pa.setPeso(1);
-        am_rr.setPeso(1);
-        rr_pa.setPeso(1);
-        pa_ap.setPeso(1);
-        pa_to.setPeso(1);
-        pa_ma.setPeso(1);
-        to_ba.setPeso(1);
-        to_ma.setPeso(1);
-        to_pi.setPeso(1);
-        ma_pi.setPeso(1);
-        pi_ce.setPeso(1);
-        pi_ba.setPeso(1);
-        pi_pe.setPeso(1);
-        pe_ce.setPeso(1);
-        pe_al.setPeso(1);
-        pe_pb.setPeso(1);
-        pe_ba.setPeso(1);
-        ba_se.setPeso(1);
-        ba_al.setPeso(1);
-        se_al.setPeso(1);
-        rn_ce.setPeso(1);
-        rn_pb.setPeso(1);
-        pb_ce.setPeso(1);
-        
-        //testes:
-        sc_rs.setPeso(1);
-        pr_sc.setPeso(1);
-        sp_pr.setPeso(1);
-        ms_pr.setPeso(1);
-        ms_sp.setPeso(1);
-        rj_sp.setPeso(1);
-        mg_sp.setPeso(1);
-        mt_ms.setPeso(1);
-        mg_ms.setPeso(1);
-        go_ms.setPeso(1);
-        mg_rj.setPeso(1);
-        es_rj.setPeso(1);
-        go_mg.setPeso(1);
-        es_mg.setPeso(1);
-        ba_mg.setPeso(1);
-        ba_es.setPeso(1);
-        ba_go.setPeso(1);
-        to_go.setPeso(1);
-        mt_go.setPeso(1);
-        pa_mt.setPeso(1);
-        ro_mt.setPeso(1);
-        am_mt.setPeso(1);
-        am_ro.setPeso(1);
-        am_ac.setPeso(1);
-        pa_am.setPeso(1);
-        rr_am.setPeso(1);
-        ap_pa.setPeso(1);
-        to_pa.setPeso(1);
-        ma_pa.setPeso(1);
-        pi_to.setPeso(1);
-        ba_pi.setPeso(1);
-        pe_pi.setPeso(1);
-        ce_pi.setPeso(1);
-        al_pe.setPeso(1);
-        pb_pe.setPeso(1);
-        ba_pe.setPeso(1);
-        se_ba.setPeso(1);
-        al_ba.setPeso(1);
-        al_se.setPeso(1);
-        ce_rn.setPeso(1);
-        pb_rn.setPeso(1);
-        ce_pb.setPeso(1);
+        rs_sc.setPeso(490);
+        sc_pr.setPeso(325);
+        pr_sp.setPeso(575);
+        pr_ms.setPeso(573);
+        sp_ms.setPeso(893);
+        sp_rj.setPeso(360);
+        sp_mg.setPeso(491);
+        ms_mt.setPeso(492);
+        ms_mg.setPeso(391);
+        ms_go.setPeso(432);
+        rj_mg.setPeso(342);
+        rj_es.setPeso(231);
+        mg_go.setPeso(435);
+        mg_es.setPeso(123);
+        mg_ba.setPeso(155);
+        es_ba.setPeso(431);
+        go_ba.setPeso(231);
+        go_to.setPeso(324);
+        go_mt.setPeso(541);
+        mt_to.setPeso(421);
+        mt_pa.setPeso(311);
+        mt_ro.setPeso(132);
+        mt_am.setPeso(114);
+        ro_ac.setPeso(415);
+        ro_am.setPeso(712);
+        ac_am.setPeso(612);
+        am_pa.setPeso(431);
+        am_rr.setPeso(423);
+        rr_pa.setPeso(512);
+        pa_ap.setPeso(431);
+        pa_to.setPeso(523);
+        pa_ma.setPeso(512);
+        to_ba.setPeso(222);
+        to_ma.setPeso(421);
+        to_pi.setPeso(532);
+        ma_pi.setPeso(452);
+        pi_ce.setPeso(254);
+        pi_ba.setPeso(543);
+        pi_pe.setPeso(324);
+        pe_ce.setPeso(432);
+        pe_al.setPeso(324);
+        pe_pb.setPeso(443);
+        pe_ba.setPeso(322);
+        ba_se.setPeso(112);
+        ba_al.setPeso(134);
+        se_al.setPeso(124);
+        rn_ce.setPeso(242);
+        rn_pb.setPeso(232);
+        pb_ce.setPeso(331);
+        sc_rs.setPeso(490);
+        pr_sc.setPeso(325);
+        sp_pr.setPeso(575);
+        ms_pr.setPeso(573);
+        ms_sp.setPeso(893);
+        rj_sp.setPeso(360);
+        mg_sp.setPeso(491);
+        mt_ms.setPeso(492);
+        mg_ms.setPeso(391);
+        go_ms.setPeso(432);
+        mg_rj.setPeso(342);
+        es_rj.setPeso(231);
+        go_mg.setPeso(435);
+        es_mg.setPeso(123);
+        ba_mg.setPeso(155);
+        ba_es.setPeso(431);
+        ba_go.setPeso(231);
+        to_go.setPeso(324);
+        mt_go.setPeso(541);
+        pa_mt.setPeso(421);
+        ro_mt.setPeso(311);
+        am_mt.setPeso(132);
+        am_ro.setPeso(114);
+        am_ac.setPeso(415);
+        pa_am.setPeso(712);
+        rr_am.setPeso(612);
+        ap_pa.setPeso(431);
+        to_pa.setPeso(423);
+        ma_pa.setPeso(512);
+        pi_to.setPeso(431);
+        ba_pi.setPeso(523);
+        pe_pi.setPeso(512);
+        ce_pi.setPeso(222);
+        al_pe.setPeso(421);
+        pb_pe.setPeso(532);
+        ba_pe.setPeso(452);
+        se_ba.setPeso(342);
+        al_ba.setPeso(332);
+        al_se.setPeso(421);
+        ce_rn.setPeso(242);
+        pb_rn.setPeso(333);
+        ce_pb.setPeso(442);
         
         
         Grafo grafo = new Grafo();

@@ -1,4 +1,4 @@
-package Teste;
+/*package Teste;
 
 import Model.Aresta;
 import Model.Dijkstra;
@@ -380,3 +380,8 @@ public class Test {
         System.out.println("\nCusto total: " + go.getDistancia()) ;
     }
 }
+
+
+
+
+*/
