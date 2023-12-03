@@ -24,7 +24,7 @@ public class GUI extends JFrame {
         this.grafo = grafo;
 
         setTitle("Menor Caminho - Dijkstra");
-        setSize(400, 350); // Ajustei a altura para acomodar a imagem
+        setSize(400, 350); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -42,8 +42,7 @@ public class GUI extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 10, 5, 10);
 
-        // Adição da imagem acima da caixa de texto
-        ImageIcon imagem = new ImageIcon("src/assets/mapagrafo.jpg"); // Substitua pelo caminho real da sua imagem
+        ImageIcon imagem = new ImageIcon("src/assets/mapagrafo.jpg");
         JLabel imagemLabel = new JLabel(imagem);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -74,12 +73,10 @@ public class GUI extends JFrame {
 
         resultadoArea = new JTextArea(10, 30);
         resultadoArea.setEditable(false);
-
-        // Adicionando uma barra de rolagem
+        
         JScrollPane scrollPane = new JScrollPane(resultadoArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        // Adicionando uma barra de rolagem
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.gridwidth = 2;
@@ -138,9 +135,7 @@ public class GUI extends JFrame {
                 Aresta aresta = encontrarArestaEntreVertices(origem, destino);
 
                 resultado.append(" -> ");
-                //resultado.append(aresta.getPeso());
-
-                // Calcula o custo adicionando o peso da aresta ao custo do caminho
+                
                 custoDoCaminho += aresta.getPeso();
             }
         }
@@ -157,7 +152,7 @@ public class GUI extends JFrame {
                 return aresta;
             }
         }
-        return null;  // Retorna null se a aresta não for encontrada
+        return null;  
     }
 
     
@@ -259,83 +254,57 @@ public class GUI extends JFrame {
     	Vertice to = new Vertice();
     	to.setNomeCidade("Tocantins");
 
-        // Criando arestas
+        
         
         Aresta rs_sc = new Aresta(rs, sc);
-        
         Aresta sc_pr = new Aresta(sc, pr);
-        
         Aresta pr_sp = new Aresta(pr, sp);
         Aresta pr_ms = new Aresta(pr, ms);
-        
         Aresta sp_ms = new Aresta(sp, ms);
         Aresta sp_rj = new Aresta(sp, rj);
         Aresta sp_mg = new Aresta(sp, mg);
-        
         Aresta ms_mt = new Aresta(ms, mt);        
         Aresta ms_mg = new Aresta(ms, mg);
         Aresta ms_go = new Aresta(ms, go);
-        
         Aresta rj_mg = new Aresta(rj, mg);
         Aresta rj_es = new Aresta(rj, es);
-        
         Aresta mg_go = new Aresta(mg, go);
         Aresta mg_es = new Aresta(mg, es);
         Aresta mg_ba = new Aresta(mg, ba);
-
         Aresta es_ba = new Aresta(es, ba);
-        
         Aresta go_ba = new Aresta(go, ba);
         Aresta go_to = new Aresta(go, to);
         Aresta go_mt = new Aresta(go, mt);
-        
         Aresta mt_to = new Aresta(mt, to);
         Aresta mt_pa = new Aresta(mt, pa);
         Aresta mt_ro = new Aresta(mt, ro);
         Aresta mt_am = new Aresta(mt, am);
-        
         Aresta ro_ac = new Aresta(ro, ac);
         Aresta ro_am = new Aresta(ro, am);
-        
         Aresta ac_am = new Aresta(ac, am);
-        
         Aresta am_pa = new Aresta(am, pa);
         Aresta am_rr = new Aresta(am, rr);
-        
         Aresta rr_pa = new Aresta(rr, pa);
-        
         Aresta pa_ap = new Aresta(pa, ap);
         Aresta pa_to = new Aresta(pa, to);
         Aresta pa_ma = new Aresta(pa, ma);
-        
         Aresta to_ba = new Aresta(to, ba);
         Aresta to_ma = new Aresta(to, ma);
         Aresta to_pi = new Aresta(to, pi);
-        
         Aresta ma_pi = new Aresta(ma, pi);
-        
         Aresta pi_ce = new Aresta(pi, ce);
         Aresta pi_ba = new Aresta(pi, ba);
         Aresta pi_pe = new Aresta(pi, pe);
-        
         Aresta pe_ce = new Aresta(pe, ce);
         Aresta pe_al = new Aresta(pe, al);
         Aresta pe_pb = new Aresta(pe, pb);
         Aresta pe_ba = new Aresta(pe, ba);
-        
         Aresta ba_se = new Aresta(ba, se);
         Aresta ba_al = new Aresta(ba, al);
-        
         Aresta se_al = new Aresta(se, al);
-        
         Aresta rn_ce = new Aresta(rn, ce);
         Aresta rn_pb = new Aresta(rn, pb);
-        
         Aresta pb_ce = new Aresta(pb, ce);
-        
-        
-        //testes:
-        
         Aresta sc_rs = new Aresta(sc, rs);
         Aresta pr_sc = new Aresta(pr, sc);
         Aresta sp_pr = new Aresta(sp, pr);
@@ -379,9 +348,6 @@ public class GUI extends JFrame {
         Aresta pb_rn = new Aresta(pb, rn);
         Aresta ce_pb = new Aresta(ce, pb);
         Aresta ac_ro = new Aresta(ac, ro);
-        
-        
-        
         
         rs_sc.setPeso(490);
         sc_pr.setPeso(325);

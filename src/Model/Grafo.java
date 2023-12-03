@@ -22,7 +22,6 @@ public class Grafo {
 		return this.grafo;
 	}
 
-	// Método que retorna o vértice cuja descrição é igual à procurada.
 	public Vertice encontrarVertice(String nome) {
 
 		for (int i = 0; i < this.getVertices().size(); i++) {
